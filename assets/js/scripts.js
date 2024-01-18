@@ -46,3 +46,18 @@ function updateUI(weatherData, cityName) {
         <p>Wind: ${currentWeather.wind.speed} MPH</p>
         <p>Humidity: ${currentWeather.main.humidity}%</p>
     `;
+
+    forecastCardsDiv.innerHTML = '';
+    for (let i = 0; i < weatherData.list.length; i += 8) { 
+        const forecast = weatherData.list[i];
+        const forecastCard = document.createElement('div');
+        forecastCard.className = 'forecast-card';
+        forecastCard.innerHTML = `
+            <h3>${new Date(forecast.dt_txt).toLocaleDateString()}</h3>
+            <p>Temp: ${forecast.main.temp}°F</p>
+            <p>Wind: ${forecast.wind.speed} MPH</p>
+            <p>Humidity: ${forecast.main.humidity}%</p>
+        `;
+        forecastCardsDiv.appendChild(forecastCard);
+    }
+}
