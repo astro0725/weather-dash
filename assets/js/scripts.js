@@ -70,3 +70,10 @@ function saveCityToHistory(cityName) {
         addCityToHistory(cityName);
     }
 }
+
+function addCityToHistory(cityName) {
+    const cityButton = document.createElement('button');
+    cityButton.textContent = cityName;
+    cityButton.addEventListener('click', () => getCityCoordinates(cityName));
+    cityListDiv.appendChild(cityButton);
+}
