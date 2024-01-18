@@ -77,3 +77,10 @@ function addCityToHistory(cityName) {
     cityButton.addEventListener('click', () => getCityCoordinates(cityName));
     cityListDiv.appendChild(cityButton);
 }
+
+function loadSearchHistory() {
+    const cities = JSON.parse(localStorage.getItem('cities')) || [];
+    cities.forEach(cityName => addCityToHistory(cityName));
+}
+
+loadSearchHistory();
