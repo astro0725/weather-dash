@@ -83,18 +83,35 @@ function displayCurrentWeather(weatherData, cityName) {
 }
 
 function displayForecastWeather(weatherData) {
+    const forecastCardsDiv = document.getElementById('forecast-cards');
     forecastCardsDiv.innerHTML = ''; 
+
     weatherData.list.forEach((forecast, index) => {
-        if (index % 8 === 0) {
+        if (index % 8 === 0) { 
             const forecastCard = document.createElement('div');
             forecastCard.className = 'forecast-card';
-            forecastCard.innerHTML = `
-                <h3>${new Date(forecast.dt * 1000).toLocaleDateString()}</h3>
-                <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt="Weather icon">
-                <p>Temp: ${forecast.main.temp}°F</p>
-                <p>Wind: ${forecast.wind.speed} mph</p>
-                <p>Humidity: ${forecast.main.humidity}%</p>
-            `;
+
+            const dateH3 = document.createElement('h3');
+            dateH3.textContent = new Date(forecast.dt * 1000).toLocaleDateString();
+
+            const iconImg = document.createElement('img');
+            iconImg.src = `http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`;
+            iconImg.alt = 'Weather icon';
+
+            const tempP = document.createElement('p');
+            tempP.textContent = `Temp: ${forecast.main.temp}°F`;
+
+            const windP = document.createElement('p');
+            windP.textContent = `Wind: ${forecast.wind.speed} mph`;
+
+            const humidityP = document.createElement('p');
+            humidityP.textContent = `Humidity: ${forecast.main.humidity}%`;
+
+            forecastCard.appendChild(dateH3);
+            forecastCard.appendChild(iconImg);
+            forecastCard.appendChild(tempP);
+            forecastCard.appendChild(windP);
+            forecastCard.appendChild(humidityP);
             forecastCardsDiv.appendChild(forecastCard);
         }
     });

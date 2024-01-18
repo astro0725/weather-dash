@@ -110,7 +110,7 @@ body {
     gap: 10px;
 }
 
-#forecast-card {
+.forecast-card {
     background-color: #1e90ff;
     color: white;
     padding: 10px;
@@ -121,6 +121,6 @@ body {
     justify-content: center;
 }
 
-#forecast-card img {
+.forecast-card img {
     width: 50px; 
 }
