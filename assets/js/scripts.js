@@ -5,3 +5,8 @@ const cityInput = document.getElementById('city-input');
 const cityListDiv = document.getElementById('city-list');
 const currentWeatherDiv = document.getElementById('current-weather');
 const forecastCardsDiv = document.getElementById('forecast-cards');
+
+searchButton.addEventListener('click', () => {
+    const cityName = cityInput.value;
+    getCityCoordinates(cityName);
+});
