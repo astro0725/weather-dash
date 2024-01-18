@@ -5,6 +5,8 @@ const searchButton = document.getElementById('search-button');
 const cityInput = document.getElementById('city-input');
 const cityListDiv = document.getElementById('city-list');
 const currentWeatherDiv = document.getElementById('current-weather');
+const cityNameDiv = document.getElementById('city-header');
+const weatherInfoDiv = document.getElementById('weather-info');
 const forecastCardsDiv = document.getElementById('forecast-cards');
 
 searchButton.addEventListener('click', () => {
