@@ -28,3 +28,12 @@ function getCityCoordinates(cityName) {
     })
     .catch(error => console.error('Error fetching coordinates:', error));
 }
+
+function getWeatherData(lat, lon, cityName) {
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+
+    fetch(weatherUrl)
+    .then(response => response.json())
+    .then(data => updateUI(data, cityName))
+    .catch(error => console.error('Error fetching weather data:', error));
+}
