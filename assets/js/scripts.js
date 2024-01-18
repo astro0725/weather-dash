@@ -37,3 +37,12 @@ function getWeatherData(lat, lon, cityName) {
     .then(data => updateUI(data, cityName))
     .catch(error => console.error('Error fetching weather data:', error));
 }
+
+function updateUI(weatherData, cityName) {
+    const currentWeather = weatherData.list[0];
+    currentWeatherDiv.innerHTML = `
+        <h2>${cityName} (${new Date(currentWeather.dt_txt).toLocaleDateString()})</h2>
+        <p>Temp: ${currentWeather.main.temp}°F</p>
+        <p>Wind: ${currentWeather.wind.speed} MPH</p>
+        <p>Humidity: ${currentWeather.main.humidity}%</p>
+    `;
