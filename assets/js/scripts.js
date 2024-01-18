@@ -10,3 +10,21 @@ searchButton.addEventListener('click', () => {
     const cityName = cityInput.value;
     getCityCoordinates(cityName);
 });
+
+function getCityCoordinates(cityName) {
+    const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
+
+    fetch(geocodeUrl)
+    .then(response => response.json())
+    .then(data => {
+        if (data && data.length > 0) {
+            const { lat, lon } = data[0];
+            getWeatherData(lat, lon, cityName);
+            saveCityToHistory(cityName);
+            cityInput.value = '';
+        } else {
+            alert('City not found. Please try again.');
+        }
+    })
+    .catch(error => console.error('Error fetching coordinates:', error));
+}
