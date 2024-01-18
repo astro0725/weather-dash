@@ -61,3 +61,12 @@ function updateUI(weatherData, cityName) {
         forecastCardsDiv.appendChild(forecastCard);
     }
 }
+
+function saveCityToHistory(cityName) {
+    let cities = JSON.parse(localStorage.getItem('cities')) || [];
+    if (!cities.includes(cityName)) {
+        cities.push(cityName);
+        localStorage.setItem('cities', JSON.stringify(cities));
+        addCityToHistory(cityName);
+    }
+}
