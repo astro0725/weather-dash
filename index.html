@@ -2,32 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <div id="weather-app">
-        <div id="search-area">
-            <h2>Search for a City:</h2>
-            <input type="text" id="city-input" placeholder="Enter city name" />
-            <button id="search-button">Search</button>
-            <div id="city-list">
-                <!-- Dynamically insert city buttons here -->
+    <header class="header">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container">
+        <aside class="search-sidebar">
+            <h2>Search For A City</h2>
+            <!-- Search box -->
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="Enter city name">
+                <button id="search-button">Search</button>
             </div>
-        </div>
-
-        <div id="current-weather">
-            <!-- Dynamically insert current city weather here -->
-        </div>
-
-        <div id="forecast">
-            <h3>5-Day Forecast:</h3>
-            <div id="forecast-cards">
-                <!-- Dynamically insert forecast cards here -->
+            <!-- City list -->
+            <div class="city-list">
+                <!-- Dynamically generated city buttons go here -->
             </div>
-        </div>
+        </aside>
+        <main class="weather-content">
+            <!-- Current weather -->
+            <div class="current-weather">
+            </div>
+            <!-- 5-day forecast -->
+            <div class="forecast">
+                <h3>5-Day Forecast:</h3>
+                <div class="forecast-cards">
+                    <!-- Dynamically generated forecast cards go here -->
+                </div>
+            </div>
+        </main>
     </div>
-    
 </body>
 <script src="assets/js/scripts.js"></script>
 </html>
