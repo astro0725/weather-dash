@@ -51,14 +51,35 @@ function getWeatherData(lat, lon, cityName) {
 }
 
 function displayCurrentWeather(weatherData, cityName) {
+    const cityHeaderDiv = document.getElementById('city-header');
+    const weatherInfoDiv = document.getElementById('weather-info');
+
+    cityHeaderDiv.innerHTML = '';
+    weatherInfoDiv.innerHTML = '';
+
     const currentWeather = weatherData.list[0];
-    currentWeatherDiv.innerHTML = `
-        <h2>${cityName} (${new Date(currentWeather.dt * 1000).toLocaleDateString()})</h2>
-        <img src="http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png" alt="Weather icon">
-        <p>Temp: ${currentWeather.main.temp}°F</p>
-        <p>Wind: ${currentWeather.wind.speed} mph</p>
-        <p>Humidity: ${currentWeather.main.humidity}%</p>
-    `;
+
+    const header = document.createElement('h2');
+    header.textContent = `${cityName} (${new Date(currentWeather.dt * 1000).toLocaleDateString()})`;
+
+    const icon = document.createElement('img');
+    icon.src = `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}.png`;
+    icon.alt = 'Weather icon';
+
+    cityHeaderDiv.appendChild(header);
+    cityHeaderDiv.appendChild(icon);
+
+    const temperatureP = document.createElement('p');
+    temperatureP.textContent = `Temperature: ${currentWeather.main.temp}°F`;
+    weatherInfoDiv.appendChild(temperatureP);
+
+    const windP = document.createElement('p');
+    windP.textContent = `Wind: ${currentWeather.wind.speed} mph`;
+    weatherInfoDiv.appendChild(windP);
+
+    const humidityP = document.createElement('p');
+    humidityP.textContent = `Humidity: ${currentWeather.main.humidity}%`;
+    weatherInfoDiv.appendChild(humidityP);
 }
 
 function displayForecastWeather(weatherData) {
