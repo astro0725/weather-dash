@@ -5,7 +5,7 @@
 }
 
 #header {
-    background-color: #1e90ff; 
+    background-color: darkblue; 
     color: white;
     padding: 10px 20px;
     text-align: center;
@@ -49,14 +49,14 @@ body {
 }
 
 #search-box button {
-    background-color: #1e90ff;
+    background-color: darkblue;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 #search-box button:hover {
-    background-color: #0b5394;
+    background-color: blue;
 }
 
 #city-list button {
@@ -111,7 +111,7 @@ body {
 }
 
 .forecast-card {
-    background-color: #1e90ff;
+    background-color: darkblue;
     color: white;
     padding: 10px;
     border-radius: 4px;
