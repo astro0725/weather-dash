@@ -16,8 +16,8 @@ searchButton.addEventListener('click', () => {
     }
 });
 
-function getCityCoordinates(cityName) {
-    const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityName)}&appid=${apiKey}`;
+function getCityCoordinates(cityName, saveToHistory = true) {
+    const geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityName)}&limit=1&appid=${apiKey}`;
 
     fetch(geocodeUrl)
         .then(response => {
@@ -30,7 +30,9 @@ function getCityCoordinates(cityName) {
             if (data.length > 0) {
                 const { lat, lon } = data[0];
                 getWeatherData(lat, lon, cityName);
-                saveCityToHistory(cityName);
+                if (saveToHistory) {
+                    saveCityToHistory(cityName);
+                }
             } else {
                 alert('City not found. Please try a different name.');
             }
@@ -140,4 +142,21 @@ function loadSearchHistory() {
     cities.forEach(city => addCityToHistory(city));
 }
 
+function populateCurrentWeather() {
+    const cities = JSON.parse(localStorage.getItem('cities')) || [];
+    if (cities.length > 0) {
+        const lastSearchedCity = cities[0];
+        getCityCoordinates(lastSearchedCity);
+    } else {
+        randomCityWeather();
+    }
+}
+
+function randomCityWeather() {
+    const randomCities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix', 'Philadelphia', 'San Antonio', 'San Diego', 'Dallas', 'San Jose'];
+    const randomCity = randomCities[Math.floor(Math.random() * randomCities.length)];
+    getCityCoordinates(randomCity, false);
+}
+
 loadSearchHistory();
+populateCurrentWeather();
